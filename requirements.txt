@@ -1,0 +1,6 @@
+Avatar==0.1
+Django==1.10
+django-appconf==1.0.3
+django-avatar==4.1.0
+Pillow==6.2.1
+six==1.13.0

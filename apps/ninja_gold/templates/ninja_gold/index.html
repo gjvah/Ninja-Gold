@@ -1,0 +1,197 @@
+{% load avatar_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+    <title>Ninja Gold</title>
+    {% load static %}
+
+    <script src="{% static 'ninja_gold/js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'ninja_gold/css/style.css' %}">
+
+
+</head>
+
+<body>{% if user.is_authenticated %}
+    <div id="logo"><img src="{% static 'ninja_gold/images/ng-logo.png' %}" alt="">
+        <div id="player_name">
+            <div id="avatar-pic">{% avatar user 70 %}</div>
+            Hello {{request.user}}
+            <div id="logout">
+
+                <a href="/profile"><img src="{% static 'ninja_gold/images/profile.png' %}" alt="">My Profile</a>
+                <a href="/logout"> <img src="{% static 'ninja_gold/images/logout.png' %}" alt="">Logout</a>
+            </div>
+        </div>
+        <div id="main">
+            <div id="your-gold">
+                Your Gold:
+                {% if request.session.total_gold <= 0 %}
+                <span class="red">{{request.session.total_gold}}/{{request.session.max_gold}}</span>
+                {% endif %}
+                {% if request.session.total_gold > 0 %}
+                <span class="green">{{request.session.total_gold}}/{{request.session.max_gold}}</span>
+                {% endif %}
+
+            </div>
+            <div id="your-moves">
+                Moves:
+                {{request.session.moves}}/{{request.session.max_moves}}
+            </div>
+            <div id="game-settings-title">Geme Settings</div>
+            <div id="defaults">
+                <form action='/ninja_gold/defaults' method='post'>
+                    {% csrf_token %}
+                    <input type='hidden' name='reset'>
+                    <input id="defaults-btn" type='submit' value=''>
+                </form>
+            </div>
+
+            <div id="settings">
+                <button id="myBtn"></button>
+                <div id="myModal" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Game Settings</h2>
+                        </div>
+                        <div class="modal-body">
+                            <form action='/ninja_gold/settings' method='post'>
+                                {% csrf_token %}
+                                <label for="gold">Gold Goal</label>
+                                <input type="text" name="gold" required>
+                                <label for="gold">Moves Goal</label>
+                                <input type="text" name="moves-requested" required>
+                                <input type='hidden' name='settings'>
+                                <input type='submit' value='Save Settings'>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="endgame">
+                {% if request.session.moves >= request.session.max_moves and request.session.total_gold < request.session.max_gold %}
+                <div id="endgame-screen">
+                    <div class="announcement">
+                        Sorry, you lost in {{request.session.moves}} moves with {{request.session.total_gold}} coins!
+                    </div>
+                    <form action='/ninja_gold/reset' method='post'>
+                        {% csrf_token %}
+                        <input type='hidden' name='reset'>
+                        <input type='submit' value='Reset Game'>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+            <div id="wingame">
+
+                {% if request.session.total_gold >= request.session.max_gold %}
+                <div id="wingame-screen">
+                    <div class="announcement">
+                        Congratulations, you won in {{request.session.moves}} moves with {{request.session.total_gold}}
+                        coins!
+                    </div>
+                    <form action='/ninja_gold/reset' method='post'>
+                        {% csrf_token %}
+                        <input type='hidden' name='reset'>
+                        <input type='submit' value='Reset Game'>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+            <div id="wrapper">
+                <div id="farm" , class="forms">
+                    <form action='/ninja_gold/process' method='POST'>
+                        {% csrf_token %}
+                        <span class="location-titles">Farm</span> <span class="location-subtitles">Earn 5 - 20 Coins
+                        </span> <input type='hidden' name='location' value="farm">
+                        <input type='submit' value='Find Gold'>
+                    </form>
+                </div>
+                <div id="cave" , class="forms">
+                    <form action='/ninja_gold/process' method='POST'>
+                        {% csrf_token %}
+                        <span class="location-titles">Cave</span> <span class="location-subtitles">Earn 10 - 15 Coins
+                        </span> <input type='hidden' name='location' value="cave">
+                        <input type='submit' value='Find Gold'>
+                    </form>
+                </div>
+                <div id="house" , class="forms">
+                    <form action='/ninja_gold/process' method='POST'>
+                        {% csrf_token %}
+                        <span class="location-titles">House</span> <span class="location-subtitles">Earn 8 - 12
+                            Coins</span>
+                        </span> <input type='hidden' name='location' value="house">
+                        <input type='submit' value='Find Gold'>
+                    </form>
+                </div>
+                <div id="casino" , class="forms">
+                    <form action='/ninja_gold/process' method='POST'>
+                        {% csrf_token %}
+                        <span class="location-titles">Casino</span> <span class="location-subtitles">Win or Lose up to
+                            50
+                            Coins
+                        </span> <input type='hidden' name='location' value="casino">
+                        <input type='submit' value='Find Gold'>
+                    </form>
+                </div>
+
+            </div>
+            <div class="reset-forms">
+
+            </div>
+            <div id="msg"><img src="{% static 'ninja_gold/images/gradient.png' %}" alt=""></div>
+            <div id="message">
+                {% for m in message %}
+                {{ m |safe}}
+                {% endfor %}
+            </div>
+
+        </div>
+        <script>
+            // Get the modal
+            var modal = document.getElementById("myModal");
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal
+            btn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+        </script>
+        {% else %}
+        <div id="login-box">
+            <div id="login-inner">
+                <span class="please-login">
+                    You need to be logged in to see this page.
+                    <a href="/login"><span class="login-button">Login</span></a></span>
+            </div>
+        </div>
+        {% endif %}
+</body>
+
+</html>

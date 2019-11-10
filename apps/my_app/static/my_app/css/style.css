@@ -1,0 +1,198 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: #000000;
+	background-image: url(../images/main-bg.jpg);
+	background-size: cover;
+	background-repeat-y: no-repeat;
+	margin: 0;
+}
+.def_header {
+	padding-top: 0;
+	margin-top: -12px;
+}
+.ng-link {
+	margin-top: 400px;
+}
+#left img {
+	margin-left: 20px;
+	margin-top: 30px;
+}
+#main {
+	display: block;
+	width: 970px;
+	background: rgba(255, 255, 255, 0.68);
+	background-image: url(../images/wrapper-bg.png);
+	box-sizing: border-box;
+	background-repeat: no-repeat;
+	background-position-x: right;
+	background-position-y: bottom;
+	padding: 30px;
+	margin: 0 auto;
+	margin-top: 50px;
+	border-radius: 10px;
+	-webkit-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.75);
+}
+#wrapper {
+	display: block;
+	width: 970px;
+	margin: 0 auto;
+	height: 100vh;
+	padding: 0;
+	box-sizing: border-box;
+	padding-top: 50px;
+}
+#login {
+	display: block;
+}
+input {
+	display: block;
+	padding: 12px;
+	border: 1px solid #c3c0c0;
+	border-radius: 5px;
+	width: 200px;
+	margin: 10px auto;
+}
+#player_name {
+	display: block;
+	position: relative;
+	top: 0;
+	color: #4c4c4c;
+	font-size: 25px;
+	width: 400px;
+	margin-left: 18px;
+}
+#player_name img {
+	position: relative;
+	margin-bottom: -44px;
+	margin-left: -6px;
+}
+#avatar-pic {
+	display: inline;
+	margin-right: 10px;
+}
+#avatar-pic img {
+	display: inline;
+	border-radius: 13px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	border: 2px solid #f8d998;
+}
+#logout {
+	display: block;
+	margin-left: 88px;
+}
+#logout a {
+	color: black;
+	font-size: 14px;
+	text-decoration: none;
+}
+#logout img {
+	display: inline-block;
+	padding-right: 5px;
+	padding-left: 11px;
+	margin-bottom: -11px;
+}
+.lower-links {
+	display: block;
+	font-size: 11px !important;
+	padding: 2px;
+	margin-left: -90px;
+}
+#lower-links-wrapper {
+	display: block;
+	margin-top: 12px;
+}
+.btn-v {
+	display: block;
+	width: 186px;
+	height: 46px;
+	border: 1px solid #efefef;
+	border-radius: 4px;
+	margin: 0 auto;
+	bottom: 18px;
+	position: relative;
+	margin-top: 53px;
+	margin-bottom: 14px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	background: rgb(255, 255, 255);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(244, 198, 101, 1) 100%);
+	font-size: 18px;
+	color: #191919;
+}
+.login-header {
+	padding: 2px 16px;
+	color: #4e4e4e;
+	font-size: 14px;
+	margin-bottom: 22px;
+	border-radius: 20px 20px 0 0;
+	background: rgb(255, 255, 255);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(244, 198, 101, 1) 100%);
+}
+.login-body {
+	padding: 2px 16px;
+}
+
+.login-content {
+	position: relative;
+	background-color: rgba(254, 254, 254, 0.7);
+	padding: 0;
+	border: 1px solid #888;
+	width: 330px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s;
+	border-radius: 20px;
+	text-align: center;
+}
+
+.helptext {
+	display: none;
+}
+.please-login {
+	color: white;
+}
+.please-login a {
+	color: white;
+}
+.login-button {
+	display: block;
+	width: 186px;
+	height: 46px;
+	border: 1px solid #efefef;
+	border-radius: 4px;
+	margin: 0 auto;
+	bottom: 18px;
+	position: relative;
+	margin-top: 53px;
+	margin-bottom: 14px;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	background: rgb(255, 255, 255);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(244, 198, 101, 1) 100%);
+	font-size: 18px;
+	color: #191919;
+	padding: 1px 6px;
+	text-align: center;
+	line-height: 40px;
+}
+#login-inner {
+	display: block;
+	top: 50%;
+	position: relative;
+	margin-top: -150px;
+}
+#login-box {
+	display: block;
+	width: 970px;
+	height: 100vh;
+	margin: 0 auto;
+	text-align: center;
+}

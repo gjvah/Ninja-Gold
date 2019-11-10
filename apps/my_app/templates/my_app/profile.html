@@ -1,0 +1,49 @@
+{% load avatar_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'my_app/css/style.css' %}">
+</head>
+
+<body>{% if user.is_authenticated %}
+    <div id="main">
+        <h2 class="def_header">Profile</h2>
+
+        <div id="player_name">
+            <div id="avatar-pic">{% avatar user 80 %}</div>
+            Hello {{request.user}}
+            <div id="logout">
+
+
+                <a href="/logout"> <img src="{% static 'ninja_gold/images/logout.png' %}" alt="">Logout</a>
+                <div id="lower-links-wrapper">
+                    <a href="{% url 'avatar_change' %}" class="lower-links">Change Avatar</a>
+                    <a href="{% url 'avatar_delete' %}" class="lower-links">Delete Avatar</a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <h3>Games</h3>
+        <div id="left">
+            <a href="/ninja_gold" class="ng-link"><img src="{% static 'my_app/images/play-ninja-gold.png' %}"
+                    alt=""></a>
+        </div>
+    </div>
+    {% else %}
+    <div id="login-box">
+        <div id="login-inner">
+            <span class="please-login">
+                You need to be logged in to see this page.
+                <a href="/login"><span class="login-button">Login</span></a></span>
+        </div>
+    </div>
+    {% endif %}
+</body>
+
+</html>

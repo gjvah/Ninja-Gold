@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'my_app/css/style.css' %}">
+    <script src="{% static 'my_app/js/script.js' %}"></script>
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="login" class="login-content">
+            <div class="login-header">
+                <h2>Login</h2>
+            </div>
+            {% block content %}
+            <form method="POST" class="register">
+                {% csrf_token %}
+                {{form}}
+                Already have an account? <a href="/login">Login</a>
+                <button type="submit" class="btn-v">Register</button>
+            </form>
+            {% endblock %}
+
+        </div>
+    </div>
+
+</body>
+
+</html>
